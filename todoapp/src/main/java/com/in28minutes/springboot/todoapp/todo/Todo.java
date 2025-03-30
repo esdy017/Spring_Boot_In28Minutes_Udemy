@@ -5,16 +5,16 @@ import java.time.LocalDate;
 public class Todo {
     private int id;
     private String username;
-    private String descriotion;
+    private String description;
     private LocalDate targetDate;
-    private boolean isCompleted;
+    private boolean completed;
 
-    public Todo(int id, String username, String descriotion, LocalDate targetDate, boolean isCompleted) {
+    public Todo(int id, String username, String description, LocalDate targetDate, boolean completed) {
         this.id = id;
         this.username = username;
-        this.descriotion = descriotion;
+        this.description = description;
         this.targetDate = targetDate;
-        this.isCompleted = isCompleted;
+        this.completed = completed;
     }
 
     public int getId() {
@@ -33,12 +33,12 @@ public class Todo {
         this.username = username;
     }
 
-    public String getDescriotion() {
-        return descriotion;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescriotion(String descriotion) {
-        this.descriotion = descriotion;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public LocalDate getTargetDate() {
@@ -50,11 +50,11 @@ public class Todo {
     }
 
     public boolean isCompleted() {
-        return isCompleted;
+        return completed;
     }
 
     public void setCompleted(boolean completed) {
-        isCompleted = completed;
+        this.completed = completed;
     }
 
     @Override
@@ -62,9 +62,9 @@ public class Todo {
         return "Todo{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", descriotion='" + descriotion + '\'' +
+                ", description='" + description + '\'' +
                 ", targetDate=" + targetDate +
-                ", isCompleted=" + isCompleted +
+                ", completed=" + completed +
                 '}';
     }
 }
