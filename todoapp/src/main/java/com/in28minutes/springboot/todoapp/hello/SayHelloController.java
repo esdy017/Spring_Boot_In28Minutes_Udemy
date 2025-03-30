@@ -27,4 +27,9 @@ public class SayHelloController {
 
         return stringBuffer.toString();
     }
+
+    @RequestMapping("/hello-jsp")
+    public String sayHelloJsp() {
+        return "sayHello";
+    }
 }
