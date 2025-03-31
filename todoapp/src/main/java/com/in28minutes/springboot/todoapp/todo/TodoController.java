@@ -40,7 +40,7 @@ public class TodoController {
         if (bindingResult.hasErrors()) {
             return "todo";
         }
-        todoService.addTodo((String) modelMap.get("name"), todo.getDescription(), LocalDate.now().plusMonths(3), false);
+        todoService.addTodo((String) modelMap.get("name"), todo.getDescription(), todo.getTargetDate(), false);
         return "redirect:todos";
     }
 
