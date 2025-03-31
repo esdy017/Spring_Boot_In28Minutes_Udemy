@@ -1,7 +1,9 @@
 package com.in28minutes.springboot.todoapp.todo;
 
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -33,7 +35,10 @@ public class TodoController {
     }
 
     @RequestMapping(value = "/addTodo", method = RequestMethod.POST)
-    public String addNewTodoAndRedirect(ModelMap modelMap, Todo todo) {
+    public String addNewTodoAndRedirect(ModelMap modelMap, @Valid Todo todo, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "todo";
+        }
         todoService.addTodo((String) modelMap.get("name"), todo.getDescription(), LocalDate.now().plusMonths(3), false);
         return "redirect:todos";
     }
