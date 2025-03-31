@@ -3,9 +3,10 @@
         <title>Welcome Page</title>
     </head>
     <body>
-        <div>Welcome to Your Dashboard</div>
-        <hr/>
-        <h3>Name: ${name}</h3>
-        <div>Manage your <a href="/todos">todos</a></div>
+        <div class="container">
+            <h1>Welcome to Your Dashboard</h1>
+            <h3>Profile: ${name}</h3>
+            <p>Manage your <a href="/todos">todos</a></p>
+        </div>
     </body>
 </html>
