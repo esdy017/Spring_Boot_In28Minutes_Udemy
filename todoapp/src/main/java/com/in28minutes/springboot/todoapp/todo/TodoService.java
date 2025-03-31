@@ -1,5 +1,6 @@
 package com.in28minutes.springboot.todoapp.todo;
 
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -22,6 +23,12 @@ public class TodoService {
         return todos;
     }
 
+    public Todo findById(int id) {
+        Predicate<Todo> predicate = todo -> todo.getId() == id;
+        Todo todo = todos.stream().filter(predicate).findFirst().get();
+        return todo;
+    }
+
     public void addTodo(String username, String description, LocalDate targetDate, boolean completed) {
         todos.add(new Todo(++todosCount, username, description, targetDate, completed));
     }
@@ -29,5 +36,10 @@ public class TodoService {
     public void deleteById(int id) {
         Predicate<? super Todo> predicate = todo -> todo.getId() == id;
         todos.removeIf(predicate);
+    }
+
+    public void updateTodo(@Valid Todo todo) {
+        deleteById(todo.getId());
+        todos.add(todo);
     }
 }
